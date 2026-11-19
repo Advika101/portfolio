@@ -1,0 +1,2 @@
+- Minimize comments AS MUCH AS POSSIBLE. They get outdated very fast and nobody reads them
+- Do not make .mds other than README.md
