@@ -99,14 +99,16 @@ export default class App extends React.Component {
         <div className="shell" style={{maxWidth: "none", margin: "0 auto", padding: "28px 0 0", display: "flex", flexDirection: "column", gap: "18px"}}>
           <Header />
           <p style={{margin: "0", padding: "0 20px", fontFamily: "'Press Start 2P', monospace", fontSize: "10px", color: "var(--muted)"}}>&gt; click anything in the room<span className="blink" style={{color: "var(--acc)"}}>_</span></p>
-          <div className="stage" style={{position: "relative", "--wall": sc.wall, "--base": sc.base}}>
-            <div className="room-scroll">
-              <div className="scene" style={{position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "visible"}}>
-                <Room sc={sc} night={night} day={day} cat={cat} ampCls={ampCls} ampLed={ampLed} playing={playing} />
-                <Hotspots hotspots={hotspots} showBubble={showBubble} bubble={bubble} />
+          <div className="stage" style={{"--wall": sc.wall, "--base": sc.base}}>
+            <div className="band" style={{position: "relative"}}>
+              <div className="room-scroll">
+                <div className="scene" style={{position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "visible"}}>
+                  <Room sc={sc} night={night} day={day} cat={cat} ampCls={ampCls} ampLed={ampLed} playing={playing} />
+                  <Hotspots hotspots={hotspots} showBubble={showBubble} bubble={bubble} />
+                </div>
               </div>
+              {hasSel && <Panel cur={cur} closePop={closePop} isContact={isContact} isGuitar={isGuitar} isCat={isCat} riffs={riffs} pets={pets} />}
             </div>
-            {hasSel && <Panel cur={cur} closePop={closePop} isContact={isContact} isGuitar={isGuitar} isCat={isCat} riffs={riffs} pets={pets} />}
           </div>
         </div>
       </div>
