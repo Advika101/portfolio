@@ -31,6 +31,17 @@ async function layout(page) {
   });
 }
 
+async function offscreen(page) {
+  return page.evaluate(() => {
+    const vw = document.documentElement.clientWidth;
+    return [...document.body.querySelectorAll('*')]
+      .filter((el) => el.checkVisibility({ opacityProperty: true, visibilityProperty: true }))
+      .map((el) => ({ el, r: el.getBoundingClientRect() }))
+      .filter(({ r }) => r.width > 0 && (r.left < -0.5 || r.right > vw + 0.5))
+      .map(({ el, r }) => `${el.tagName.toLowerCase()}.${el.className} ${Math.round(r.left)}..${Math.round(r.right)} of ${vw}`);
+  });
+}
+
 for (const mode of ['day', 'night']) {
   test.describe(mode, () => {
     test.beforeEach(async ({ page }) => {
@@ -43,6 +54,22 @@ for (const mode of ['day', 'night']) {
     test('nothing overflows horizontally', async ({ page }) => {
       const l = await layout(page);
       expect(l.scrollWidth).toBeLessThanOrEqual(l.vw);
+      expect(await offscreen(page)).toEqual([]);
+    });
+
+    test('every room label stays on screen when shown', async ({ page }) => {
+      const count = await page.locator('.hot').count();
+      const bad = [];
+      for (let i = 0; i < count; i++) {
+        const spot = page.locator('.hot').nth(i);
+        await spot.hover();
+        const tip = spot.locator('.tip');
+        await expect(tip).toHaveCSS('opacity', '1');
+        const box = await tip.boundingBox();
+        const vw = page.viewportSize().width;
+        if (box.x < 0 || box.x + box.width > vw) bad.push(`${await spot.getAttribute('aria-label')}: ${Math.round(box.x)}..${Math.round(box.x + box.width)} of ${vw}`);
+      }
+      expect(bad).toEqual([]);
     });
 
     test('room is fully shown and the panel does not escape it', async ({ page }) => {

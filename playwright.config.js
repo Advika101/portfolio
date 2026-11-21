@@ -6,8 +6,12 @@ const screen = (width, height) => ({ viewport: { width, height } });
 const targets = {
   'iPhone SE': chromium(devices['iPhone SE']),
   'iPhone 15 Pro Max': chromium(devices['iPhone 15 Pro Max']),
+  'Pixel 9': chromium(devices['Pixel 9']),
+  'Pixel 9 Pro': chromium(devices['Pixel 9 Pro']),
   'Pixel 7': chromium(devices['Pixel 7']),
   'iPad Mini': chromium(devices['iPad Mini']),
+  'Pixel 9 landscape': chromium(devices['Pixel 9 landscape']),
+  'Galaxy S24': chromium(devices['Galaxy S24']),
   'iPad Pro 11': chromium(devices['iPad Pro 11']),
   'iPad Pro 11 landscape': chromium(devices['iPad Pro 11 landscape']),
   'iPad Pro 13': chromium({ ...devices['iPad Pro 11'], ...screen(1032, 1376) }),

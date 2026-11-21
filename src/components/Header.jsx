@@ -11,7 +11,7 @@ export default function Header() {
   <nav aria-label="Links" style={{display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center"}}>
     <a className="ext ghost" href="https://github.com/Advika101" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a className="ext ghost" href="https://www.linkedin.com/in/advika-bhat-604a4a255" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a className="ext ghost" href="Advika_Bhat_Resume_2026.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+    <a className="ext ghost" href="resume/Advika_Bhat_Resume_2026.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
     <a className="ext" href="mailto:advikabhatwork@gmail.com">Say hi</a>
   </nav>
 </header>
