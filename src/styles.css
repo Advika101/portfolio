@@ -85,4 +85,5 @@ a{color:var(--acc)}a:hover{color:var(--ink)}
 .ext:hover{color:#120d22;background:#ffd88a}
 .ext.ghost{background:transparent;color:var(--ink);border:3px solid var(--line);box-shadow:0 4px 0 var(--shadow);padding:9px 11px}
 .ext.ghost:hover{border-color:#ffc35a;color:var(--acc)}
-@media (max-width: 720px){.pop{position:fixed !important;left:10px !important;right:10px !important;top:auto !important;bottom:10px !important;width:auto !important;max-height:62vh !important}}
+@media (min-width: 721px){.shell{height:100dvh;box-sizing:border-box}.stage{flex:1;min-height:0;container-type:size;display:flex;justify-content:center}.room-scroll{width:min(100cqw,100cqh*16/9)}}
+@media (max-width: 720px){.pop{position:static !important;width:auto !important;min-width:0 !important;margin:12px}}

@@ -96,11 +96,11 @@ export default class App extends React.Component {
     const { hasSel, closePop, cat, night, day, th, sc, hotspots, cur, isContact, isCat, pets, showBubble, bubble, playing, isGuitar, riffs, ampCls, ampLed } = v;
     return (
       <div style={{"--pop": th.pop, "--bg": th.bg, "--panel": th.panel, "--line": th.line, "--ink": th.ink, "--muted": th.muted, "--soft": th.soft, "--head": th.head, "--acc": th.acc, "--shadow": th.shadow, overflowX: "hidden", minHeight: "100vh", background: "var(--bg)", color: "var(--ink)", fontFamily: "'VT323', monospace", fontSize: "22px", lineHeight: "1.35"}} data-document-role="page" data-label="Personal site — pixel room">
-        <div style={{maxWidth: "none", margin: "0 auto", padding: "28px 0 0", display: "flex", flexDirection: "column", gap: "18px"}}>
+        <div className="shell" style={{maxWidth: "none", margin: "0 auto", padding: "28px 0 0", display: "flex", flexDirection: "column", gap: "18px"}}>
           <Header />
           <p style={{margin: "0", padding: "0 20px", fontFamily: "'Press Start 2P', monospace", fontSize: "10px", color: "var(--muted)"}}>&gt; click anything in the room<span className="blink" style={{color: "var(--acc)"}}>_</span></p>
-          <div style={{position: "relative", background: "var(--panel)"}}>
-            <div className="room-scroll" style={{width: "100%"}}>
+          <div className="stage" style={{position: "relative"}}>
+            <div className="room-scroll">
               <div className="scene" style={{position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "visible"}}>
                 <Room sc={sc} night={night} day={day} cat={cat} ampCls={ampCls} ampLed={ampLed} playing={playing} />
                 <Hotspots hotspots={hotspots} showBubble={showBubble} bubble={bubble} />
