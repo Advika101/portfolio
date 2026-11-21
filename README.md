@@ -2,6 +2,8 @@
 
 Interactive pixel-art portfolio. Vite + React.
 
+**Live site:** https://advika101.github.io/portfolio/
+
 ## Run
 
 ```sh
@@ -25,6 +27,4 @@ npm run build    # production build → dist/
 - `public/vt323-latin.woff2` — bundled font; others load from Google Fonts.
 - `reference/portfolio.original.html` — the original self-contained Claude-artifact export.
 
-## TODO
 
-- Resume link points to `Advika_Bhat_Resume_2026.pdf` — drop that PDF in `public/` (the original blob wasn't in the export).
