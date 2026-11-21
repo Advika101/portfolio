@@ -44,12 +44,14 @@ async function offscreen(page) {
 
 test('every link to a file on the site loads', async ({ page, request }) => {
   await page.goto('./');
-  const hrefs = await page.$$eval('a[href]', (as) => as.map((a) => a.href).filter((h) => h.startsWith(location.origin)));
+  const hrefs = await page.$$eval('a[href], link[rel~="icon"], link[rel="apple-touch-icon"]', (els) => els.map((el) => el.href).filter((h) => h.startsWith(location.origin)));
   expect(hrefs.length).toBeGreaterThan(0);
   for (const href of hrefs) {
     const res = await request.get(href);
     expect(res.status(), href).toBe(200);
-    if (href.endsWith('.pdf')) expect(res.headers()['content-type'], href).toContain('pdf');
+    const type = res.headers()['content-type'];
+    if (href.endsWith('.pdf')) expect(type, href).toContain('pdf');
+    if (/\.(svg|png)$/.test(href)) expect(type, href).toContain('image/');
   }
 });
 
